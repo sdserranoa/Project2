@@ -73,7 +73,7 @@ function NavigationBar() {
             </HomeLink>
             <LinkContainer>
                 <StyledNavLink exact to='/refugios'>Refugios</StyledNavLink>
-                <StyledNavLink exact to='/mascotas'>Mascotas</StyledNavLink>
+                <StyledNavLink exact to='/pets'>Mascotas</StyledNavLink>
             </LinkContainer>
         </Navbar>
     );
