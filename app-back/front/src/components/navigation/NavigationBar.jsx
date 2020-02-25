@@ -72,7 +72,7 @@ function NavigationBar() {
                 <Logo />
             </HomeLink>
             <LinkContainer>
-                <StyledNavLink exact to='/'>Refugios</StyledNavLink>
+                <StyledNavLink exact to='/foster-houses'>Refugios</StyledNavLink>
                 <StyledNavLink exact to='/pets'>Mascotas</StyledNavLink>
             </LinkContainer>
         </Navbar>
