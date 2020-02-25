@@ -68,11 +68,11 @@ const StyledNavLink = styled(NavLink)`
 function NavigationBar() {
     return (
         <Navbar>
-            <HomeLink exact to='/'>
+            <HomeLink exact to='/home'>
                 <Logo />
             </HomeLink>
             <LinkContainer>
-                <StyledNavLink exact to='/refugios'>Refugios</StyledNavLink>
+                <StyledNavLink exact to='/'>Refugios</StyledNavLink>
                 <StyledNavLink exact to='/pets'>Mascotas</StyledNavLink>
             </LinkContainer>
         </Navbar>

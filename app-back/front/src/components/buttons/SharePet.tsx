@@ -14,3 +14,4 @@ const SharePet: React.StatelessComponent<WebShareInterface & OwnProps > = ({
   // : <div></div>;
 
 export default webShare<OwnProps>()(SharePet);
+

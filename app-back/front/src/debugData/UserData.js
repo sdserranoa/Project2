@@ -8,13 +8,13 @@ export let users= [
             {
                 petId:1,
                 userPetId: 1,
-                state: 'Me Gusta',
+                state: 'disliked',
                 addedToCart: false,
             },
             {
                 petId:2,
                 userPetId: 2,
-                state: 'No Me Gusta',
+                state: 'liked',
                 addedToCart: false,
             },
             {
@@ -38,13 +38,13 @@ export let user=
             {
                 petId:1,
                 userPetId: 1,
-                state: 'Me Gusta',
+                state: 'disliked',
                 addedToCart: false,
             },
             {
                 petId:2,
                 userPetId: 2,
-                state: 'No Me Gusta',
+                state: 'liked',
                 addedToCart: false,
             },
             {

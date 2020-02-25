@@ -19,6 +19,19 @@ const MobilePhoto = styled.div`
     }
 
 `
+
+const PhotoGridContainer = styled.div`
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative;
+    justify-content: center;
+    justify-items: center;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+
+`
 class PhotoGrid extends React.Component {
     state = {
         photoLinks: [],
@@ -73,40 +86,42 @@ class PhotoGrid extends React.Component {
 
     render() {
         return (
-            <Gallery
-                style={{
-                    height: "100%",
-                    width: "100%"
-                }}
-                index={this.state.index}
-                onRequestChange={i => {
-                    i === this.state.photoLinks.length - 1 ?
-                        this.setIndex(1)
-                        :
-                        i === 0 ?
-                            this.setIndex(this.state.photoLinks.length - 2)
+            <PhotoGridContainer>
+                <Gallery
+                    style={{
+                        height: "100%",
+                        width: "100%"
+                    }}
+                    index={this.state.index}
+                    onRequestChange={i => {
+                        i === this.state.photoLinks.length - 1 ?
+                            this.setIndex(1)
                             :
-                            this.setIndex(i)
-                        ;
-                }}
-            >
-                    {  this.state.photoLinks.map(image => (
-                        <div key={image}>
-                            <Photo>
-                                <GalleryImage objectFit="contain" key={image} src={image} style={{
-                                    width: "95%",
-                                    height: "300px"
-                                }} />
-                            </Photo>
-                            <MobilePhoto>
-                                <GalleryImage objectFit="contain" key={image} src={image} style={{
-                                    width: "95%",
-                                    height: "250px"
-                                }} />
-                            </MobilePhoto>
-                        </div>
-                    ))}
-            </Gallery>
+                            i === 0 ?
+                                this.setIndex(this.state.photoLinks.length - 2)
+                                :
+                                this.setIndex(i)
+                            ;
+                    }}
+                >
+                        {  this.state.photoLinks.map(image => (
+                            <div key={image}>
+                                <Photo>
+                                    <GalleryImage objectFit="contain" key={image} src={image} style={{
+                                        width: "95%",
+                                        height: "300px"
+                                    }} />
+                                </Photo>
+                                <MobilePhoto>
+                                    <GalleryImage objectFit="contain" key={image} src={image} style={{
+                                        width: "95%",
+                                        height: "250px"
+                                    }} />
+                                </MobilePhoto>
+                            </div>
+                        ))}
+                </Gallery>
+            </PhotoGridContainer>
         );
     }
 }

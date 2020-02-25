@@ -8,8 +8,13 @@ import ContentLoader from '../components/ContentLoader';
 import View from '../components/layouts/View';
 import { pets } from '../debugData/PetData';
 import { user } from '../debugData/UserData';
+import styled from 'styled-components';
 
-
+const PetViewsGrid = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+`;
 
 function PetsView(props) {
     const [userId] = useState(props.match.params.id);
@@ -62,11 +67,13 @@ function PetsView(props) {
             <NavigationBar/>
             <main>
                 <h1>Hola {user.name},</h1>
-                <ContentLoader loading={loadingPets}>
-                    {pets.map(function (pet,index) {
-                            return <PetView key={index} id={pet.id} pet={pet} userId={user.id} />;
-                    })}
-                </ContentLoader>
+                <PetViewsGrid>
+                    <ContentLoader loading={loadingPets}>
+                        {pets.map(function (pet,index) {
+                                return <PetView key={index} id={pet.id} pet={pet} userId={user.id} />;
+                        })}
+                    </ContentLoader>
+                </PetViewsGrid>
             </main>
             <Footer />
         </View>
