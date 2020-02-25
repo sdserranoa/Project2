@@ -2,21 +2,21 @@ import React, { useState, useEffect } from 'react';
 // import url from '../components/api/url'
 import NavigationBar from '../components/navigation/NavigationBar';
 import Footer from '../components/navigation/Footer';
-import PetView from '../components/petView/PetView';
+import PetsView from '../components/petView/PetsView';
 import { Redirect } from 'react-router-dom';
-import ContentLoader from '../components/ContentLoader';
 import View from '../components/layouts/View';
 import { pets } from '../debugData/PetData';
 import { user } from '../debugData/UserData';
 import styled from 'styled-components';
 
-const PetViewsGrid = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+const TopInfoContainer = styled.div`
+    align-items: center;
+    height: fit-content;
+    text-align: center;
+    width: 100%;
+    margin: 25px 0 100px;
 `;
-
-function PetsView(props) {
+function AllPetsView(props) {
     const [userId] = useState(props.match.params.id);
 
     //0-->NO   1-->inscripcion  2-->referidos
@@ -58,6 +58,7 @@ function PetsView(props) {
 
     return (
         <View>
+
             {redirect ===0 ? null
                 :
                 redirect ===1? <Redirect to='/'/>
@@ -65,19 +66,18 @@ function PetsView(props) {
                 null
              }
             <NavigationBar/>
+
             <main>
-                <h1>Hola {user.name},</h1>
-                <PetViewsGrid>
-                    <ContentLoader loading={loadingPets}>
-                        {pets.map(function (pet,index) {
-                                return <PetView key={index} id={pet.id} pet={pet} userId={user.id} />;
-                        })}
-                    </ContentLoader>
-                </PetViewsGrid>
+                <TopInfoContainer>
+                    <h2>Mascotas Para Adoptar</h2>
+                </TopInfoContainer>
+                <PetsView pets={pets} loading={loadingPets} user={user}/>
+
             </main>
+
             <Footer />
         </View>
     );
 }
 
-export default PetsView;
+export default AllPetsView;
