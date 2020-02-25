@@ -2,13 +2,8 @@ import React from 'react';
 import NavigationBar from '../components/navigation/NavigationBar';
 import Footer from '../components/navigation/Footer';
 import View from '../components/layouts/View';
-import styled from 'styled-components';
+import MainViewContent from '../components/layouts/MainViewContent';
 
-const MainViewContent = styled.main`
-    flex: 1 0 auto;
-    text-align: center;
-    padding-top: 20px;
-`;
 
 class Favorites extends React.Component {
     render() {

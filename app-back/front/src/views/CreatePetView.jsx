@@ -3,8 +3,10 @@ import NavigationBar from '../components/navigation/NavigationBar';
 import Footer from '../components/navigation/Footer';
 import View from '../components/layouts/View';
 import MainViewContent from '../components/layouts/MainViewContent';
+import styled from 'styled-components';
 
-class Home extends React.Component {
+
+class CreatePetView extends React.Component {
     render() {
         return (
             <View>
@@ -18,4 +20,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default CreatePetView;
