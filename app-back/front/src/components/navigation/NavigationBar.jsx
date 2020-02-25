@@ -72,9 +72,8 @@ function NavigationBar() {
                 <Logo />
             </HomeLink>
             <LinkContainer>
-                <StyledNavLink exact to='/future-users'>Leads</StyledNavLink>
-                <StyledNavLink exact to='/users'>Clientes</StyledNavLink>
-                <StyledNavLink exact to='/properties'>Propiedades</StyledNavLink>
+                <StyledNavLink exact to='/refugios'>Refugios</StyledNavLink>
+                <StyledNavLink exact to='/mascotas'>Mascotas</StyledNavLink>
             </LinkContainer>
         </Navbar>
     );
