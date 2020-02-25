@@ -42,8 +42,8 @@ class PhotoGrid extends React.Component {
         try {
             aws.config.setPromisesDependency();
             aws.config.update({
-                accessKeyId: "AKIARCWOFO4EOUHVQBH6",
-                secretAccessKey: "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",
+                accessKeyId: "AKIAUTVSMYX35W4JGSPI",
+                secretAccessKey: "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",
                 region: 'us-east-2',
             });
             const s3 = new aws.S3();
