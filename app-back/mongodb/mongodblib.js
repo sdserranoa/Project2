@@ -18,7 +18,7 @@ const getDatabase = (callback) => {
     }); 
 }
 
-const findPets = function (db, callback) {
+const getAllPets = function (db, callback) {
     const collection = db.collection('Pets');
     collection.find({}).toArray(function (err, docs) {
         assert.equal(err, null);
@@ -34,5 +34,5 @@ const findHouses = function (db, callback) {
 }
 
 exports.getDatabase = getDatabase;
-exports.findPets = findPets;
+exports.getAllPets = getAllPets;
 exports.findHouses = findHouses;

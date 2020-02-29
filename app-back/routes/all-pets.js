@@ -5,7 +5,7 @@ const Mongolib = require("../mongodb/mongodblib");
 router.get('/', function(req, res, next) {
    
     Mongolib.getDatabase(db=>{
-        Mongolib.findPets(db,docs=>{
+        Mongolib.getAllPets(db,docs=>{
             res.send(docs);
         })
     })
