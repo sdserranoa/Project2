@@ -12,10 +12,10 @@ router.get('/', function (req, res, next) {
   })
 });
 
-router.get('/:id', function (req, res, next) {
+router.get('/:id/interactions', function (req, res, next) {
   var id = req.params.id;
   Mongolib.getDatabase(db => {
-    Mongolib.findUserById(id, db, docs => {
+    Mongolib.getIteractionsById(id, db, docs => {
       res.send(docs);
     })
   })
@@ -29,5 +29,7 @@ router.get('/:id', function (req, res, next) {
     })
   })
 });
+
+
 
 module.exports = router;
