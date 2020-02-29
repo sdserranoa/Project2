@@ -7,8 +7,13 @@ router.get('/:id', function(req, res, next) {
     Mongolib.getDatabase(db=>{
         
         Mongolib.findUserById(req.params.id,db,docs=>{
-            console.log(docs);
-            Mongolib.getPetsByIds(db,1,docs=>{ 
+            var idsPets=[];
+            docs[0].interactedPetsIds.forEach(element=>{
+            if(element.addedToCart){
+            idsPets.push(element.petId);
+            }
+            })
+            Mongolib.getPetsByIds(db,idsPets,docs=>{ 
                 res.send(docs);
             })
         } )
