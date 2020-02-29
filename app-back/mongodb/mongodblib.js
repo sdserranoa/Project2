@@ -11,11 +11,9 @@ const getDatabase = (callback) => {
     client.connect(function (err) {
         assert.equal(null, err);
         console.log("Connected successfully to server");
-
         const db = client.db(dbName);
-
         callback(db, client);
-    }); 
+    });
 }
 
 const getAllPets = function (db, callback) {
@@ -25,12 +23,13 @@ const getAllPets = function (db, callback) {
         callback(docs);
     });
 }
+
 const findHouses = function (db, callback) {
-  const collection = db.collection('Houses');
-  collection.find({}).toArray(function (err, docs) {
-      assert.equal(err, null);
-      callback(docs);
-  });
+    const collection = db.collection('Houses');
+    collection.find({}).toArray(function (err, docs) {
+        assert.equal(err, null);
+        callback(docs);
+    });
 }
 
 const getPetsByIds = function (db,petIds, callback) {
@@ -43,7 +42,27 @@ const getPetsByIds = function (db,petIds, callback) {
   
 }
 
+const findUsers = function (db, callback) {
+    const collection = db.collection('Users');
+    collection.find({}).toArray(function (err, docs) {
+        assert.equal(err, null);
+        callback(docs);
+    });
+}
+
+const findUserById = function (idU ,db, callback) {
+
+    const collection = db.collection('Users');
+
+    collection.find({ id:idU }).toArray(function (err, docs) {
+        assert.equal(err, null);
+        callback(docs);
+    });
+}
+
 exports.getDatabase = getDatabase;
 exports.getAllPets = getAllPets;
 exports.findHouses = findHouses;
 exports.getPetsByIds = getPetsByIds;
+exports.findUsers = findUsers;
+exports.findUserById = findUserById;
