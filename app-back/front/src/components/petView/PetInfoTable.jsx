@@ -24,18 +24,18 @@ function PetInfoTable({pet}) {
                     <h5>Edad: {pet.age} años</h5>
                 </div>
             }
-            {pet.description === null || pet.description === undefined || pet.description === ''?
-                null
-                :
-                <div>
-                    <h5>Descripción: {pet.description}</h5>
-                </div>
-            }
             {pet.lovingRate === null || pet.lovingRate === undefined || pet.lovingRate === ''?
                 null
                 :
                 <div>
                     <h5>Puntaje cariñoso: {pet.lovingRate}</h5>
+                </div>
+            }
+            {pet.description === null || pet.description === undefined || pet.description === ''?
+                null
+                :
+                <div>
+                    <h5>Descripción: {pet.description}</h5>
                 </div>
             }
         </form>

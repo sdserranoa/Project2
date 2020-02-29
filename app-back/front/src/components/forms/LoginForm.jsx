@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Redirect } from 'react-router-dom';
-import FormInput from '../inputs/FormInput';
+import FormInputContainer from '../inputs/FormInputContainer';
 import SmallLoadingButton from '../buttons/SmallLoadingButton';
 import logo from '../../assets/logo.png';
+import Input from '../inputs/Input';
+
 // import url from '../../api/url'
 
 const LoginContainer = styled.form`
@@ -13,7 +15,16 @@ const LoginContainer = styled.form`
     box-shadow: 0 4px 8px 0 rgb(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    padding: 24px 44px;
+    padding: 20px;
+    img {
+        height: 50%;
+        width: 100%;
+    }
+    @media only screen and (max-width: 370px) {
+        width: 100%;
+        margin: 0 25px;
+    }
+
 `;
 
 
@@ -47,22 +58,22 @@ function LoginForm() {
 
     return (
         <LoginContainer onSubmit={login}>
-            <div height='24px' width='100%' >
-                <img src={logo} alt='disliked'/>
-            </div>
-            <FormInput
-                id='username'
-                label='Usuario:'
-                type='text'
-                value={username}
-                setValue={setUsername} />
-            <FormInput
-                id='password'
-                label='Clave:'
-                type='password'
-                value={password}
-                setValue={setPassword}
-                errorMessage={errorMessage} />
+            <img src={logo} alt='disliked'/>
+
+            <FormInputContainer label='Usuario:'>
+                <Input
+                    id='username'
+                    type='text'
+                    value={username}
+                    handleChange={(e) => setUsername(e.target.value)} />
+            </FormInputContainer>
+            <FormInputContainer label='Clave:' errorMessage={errorMessage} >
+                <Input
+                    id='password'
+                    type='password'
+                    value={password}
+                    handleChange={(e) => setPassword(e.target.value)} />
+            </FormInputContainer>
             <SmallLoadingButton onClick={login} loading={loading}>Entrar</SmallLoadingButton>
         </LoginContainer>
     )

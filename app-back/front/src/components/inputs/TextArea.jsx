@@ -1,33 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledInput = styled.input`
-    height: 38px;
-    width: 190px;
+const StyledTextArea = styled.textarea`
+    height: 100px;
+    width: 300px;
     border-radius: 5px;
     border: 1px solid;
     border-color: var(--gray-light-2);
     padding: 0 10px;
-    @media only screen and (max-width: 250px) {
+    @media only screen and (max-width: 350px) {
         width: 90%;
     }
 `;
-function Input({
+function TextArea({
     id,
-    type,
+    cols,
+    rows,
     value,
     handleChange,
-    placeholder ='',
 }) {
     return (
-        <StyledInput
+        <StyledTextArea
             id={id}
             name={id}
-            type={type}
+            cols={cols}
+            rows={rows}
             value={value}
-            placeholder={placeholder}
             onChange={handleChange} />
     );
 }
 
-export default Input;
+export default TextArea;

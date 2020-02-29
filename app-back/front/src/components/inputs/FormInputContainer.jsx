@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import InputLabel from './InputLabel';
-import Input from './Input';
 
 const InputContainer = styled.div`
-    align-items: left;
+    align-items: center;
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
@@ -22,21 +21,14 @@ const ErrorMessage = styled.p`
 `;
 
 function FormInput({
-    id,
-    label,
-    type,
-    value,
-    setValue,
+    label ='',
+    children,
     errorMessage='',
 }) {
     return (
         <InputContainer>
-            <InputLabel id={id}>{label}</InputLabel>
-            <Input
-                id={id}
-                type={type}
-                value={value}
-                handleChange={(e) => setValue(e.target.value)} />
+            <InputLabel>{label}</InputLabel>
+                {children}
             <ErrorMessage>{errorMessage}</ErrorMessage>
         </InputContainer>
     );
