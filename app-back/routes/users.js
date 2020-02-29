@@ -14,7 +14,6 @@ router.get('/', function (req, res, next) {
 
 router.get('/:id', function (req, res, next) {
   var id = req.params.id;
-  console.log("id:"+id);
   Mongolib.getDatabase(db => {
     Mongolib.findUserById(id, db, docs => {
       res.send(docs);
