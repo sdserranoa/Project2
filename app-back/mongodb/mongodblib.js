@@ -32,14 +32,14 @@ const findHouses = function (db, callback) {
     });
 }
 
-const getPetsByIds = function (db,petIds, callback) {
-  const collection = db.collection('Pets');
-    collection.find({id: {$in : petIds}}).toArray(function (err, docs) {
-      assert.equal(err, null);
-      callback(docs);
-  });
- 
-  
+const getPetsByIds = function (db, petIds, callback) {
+    const collection = db.collection('Pets');
+    collection.find({ id: { $in: petIds } }).toArray(function (err, docs) {
+        assert.equal(err, null);
+        callback(docs);
+    });
+
+
 }
 
 const findUsers = function (db, callback) {
@@ -50,7 +50,7 @@ const findUsers = function (db, callback) {
     });
 }
 
-const findUserById = function (idU ,db, callback) {
+const findUserById = function (idU, db, callback) {
 
     const collection = db.collection('Users');
     collection.find({ id: parseInt(idU) }).toArray(function (err, docs) {
@@ -59,9 +59,18 @@ const findUserById = function (idU ,db, callback) {
     });
 }
 
+const getIteractionsById = function (idU, db, callback) {
+
+    findUserById(idU, db, docs => {
+        console.log(docs[0].interactedPetsIds);
+        callback(docs[0].interactedPetsIds);
+    })
+}
+
 exports.getDatabase = getDatabase;
 exports.getAllPets = getAllPets;
 exports.findHouses = findHouses;
 exports.getPetsByIds = getPetsByIds;
 exports.findUsers = findUsers;
 exports.findUserById = findUserById;
+exports.getIteractionsById = getIteractionsById;
