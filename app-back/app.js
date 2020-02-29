@@ -3,9 +3,11 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var {MongoClient} =require('./mongodb/mongodblib')
+var {MongoClient} =require('./mongodb/mongodblib');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var petsRouter = require('./routes/all-pets'); 
+var housesRouter = require('./routes/foster-houses'); 
 
 var app = express();
 
@@ -21,6 +23,8 @@ app.use(express.static(path.join(__dirname, 'front/build')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/all-pets', petsRouter);
+app.use('/foster-houses', housesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
