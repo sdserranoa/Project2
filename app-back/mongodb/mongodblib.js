@@ -33,6 +33,17 @@ const findHouses = function (db, callback) {
   });
 }
 
+const getPetsByIds = function (db,petIds, callback) {
+  const collection = db.collection('Pets');
+    collection.find({id: {$in : petIds}}).toArray(function (err, docs) {
+      assert.equal(err, null);
+      callback(docs);
+  });
+ 
+  
+}
+
 exports.getDatabase = getDatabase;
 exports.getAllPets = getAllPets;
 exports.findHouses = findHouses;
+exports.getPetsByIds = getPetsByIds;

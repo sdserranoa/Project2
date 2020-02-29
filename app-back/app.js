@@ -8,7 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var petsRouter = require('./routes/all-pets'); 
 var housesRouter = require('./routes/foster-houses'); 
-
+var cartRouter = require('./routes/shopping-cart')
 var app = express();
 
 // view engine setup
@@ -25,7 +25,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/all-pets', petsRouter);
 app.use('/foster-houses', housesRouter);
-
+app.use('/shopping-cart',cartRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
