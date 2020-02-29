@@ -53,8 +53,7 @@ const findUsers = function (db, callback) {
 const findUserById = function (idU ,db, callback) {
 
     const collection = db.collection('Users');
-
-    collection.find({ id: idU }).toArray(function (err, docs) {
+    collection.find({ id: parseInt(idU) }).toArray(function (err, docs) {
         assert.equal(err, null);
         callback(docs);
     });
