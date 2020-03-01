@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import url from '../components/api/url'
+import url from '../api/url'
 import NavigationBar from '../components/navigation/NavigationBar';
 import Footer from '../components/navigation/Footer';
 import FosterHousesView from '../components/fosterHouseView/FosterHousesView';
@@ -25,8 +25,9 @@ function AllFosterHousesView(props) {
     //0-->NO   1-->inscripcion  2-->referidos
     const [redirect, setRedirect] = useState(0);
 
-    // const [pets, setPets] = useState(pets);
-    // const [user, setUser] = useState({});
+    const [fosterHouses, setFosterHouses] = useState([]);
+    const [user, setUser] = useState({});
+
 
     const [loadingFosterHouses, setLoadingFosterHouses] = useState(true);
 
@@ -45,14 +46,14 @@ function AllFosterHousesView(props) {
     useEffect(() => {
 
         async function getFosterHouses() {
-            const url = "/foster-houses";
-            fetch(url)
-                .then(res => {
-                    console.log(res);
-                    return res.json();
-                }).then(o => {
-                    console.log(o);
-                })
+            const url1 = `${url}/foster-houses`;
+            fetch(url1)
+              .then(res => {
+                return res.json();
+              }).then(o => {
+                    setFosterHouses(o);
+                    setLoadingFosterHouses(false);
+              })
         }
 
         async function getUser() {
