@@ -62,14 +62,15 @@ const findUserById = function (idU, db, callback) {
 const getIteractionsById = function (idU, db, callback) {
 
     findUserById(idU, db, docs => {
-        console.log(docs[0].interactedPetsIds);
+       
         callback(docs[0].interactedPetsIds);
     })
 }
 const postPet = function (pet, db, callback) {
     const collection = db.collection('Pets');
-    collection.insert(pet).then(callback(pet));
+    collection.insertOne(pet).then(callback(pet));
 }
+
 const putUserPetInteraction = function (db,userId,petId,interaction,callback){
 
     getIteractionsById(userId,db,docs=>{
@@ -104,6 +105,15 @@ const putUserPetInteraction = function (db,userId,petId,interaction,callback){
 
 
 }
+const deletePet =function (petId, db, callback) {
+    const collection = db.collection('Pets');
+    collection.deleteOne(
+        { id: parseInt(petId) }
+     ).then(result=>{
+       callback("Mascota eliminada");
+     });
+    
+}
 
 const getUserbyUsername = function(username, db, callback) {
     const users = db.collection("Users");
@@ -123,4 +133,5 @@ exports.findUserById = findUserById;
 exports.getIteractionsById = getIteractionsById;
 exports.putUserPetInteraction =  putUserPetInteraction;
 exports.postPet =  postPet;
+exports.deletePet =  deletePet;
 exports.getUserbyUsername = getUserbyUsername;

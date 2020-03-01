@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "9d71bccc-902e-471f-a6c8-ac542c4c7871",
+		"name": "PetSociety",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Mascotas",
+			"item": [
+				{
+					"name": "Get todas las mascotas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/all-pets",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"all-pets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post de mascota",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \r\n        \"id\": 7,\r\n        \"name\": \"Pablito\",\r\n        \"race\": \"Golden Retriever\",\r\n        \"age\": 3,\r\n        \"description\": \"Un perro de raza pura.\",\r\n        \"lovingRate\": 3,\r\n        \"idFosterHouse\": \"1\",\r\n        \"nameFosterHouse\": \"Organización dame vida\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/all-pets/postPet",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"all-pets",
+								"postPet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete pet",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/all-pets/7/deletePet",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"all-pets",
+								"7",
+								"deletePet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put de mascota",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"petId\":1,\r\n   \"userPetId\":1,\r\n   \"state\":\"disliked\",\r\n   \"addedToCart\":false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/all-pets/1/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"all-pets",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

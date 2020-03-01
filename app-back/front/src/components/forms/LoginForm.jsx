@@ -44,6 +44,8 @@ function LoginForm() {
         setRedirect(true);
 
         /*fetch(`${url}/users/username/${username}`) 
+        console.log(`${url}/users/username/${username}`)
+        fetch(`${url}/users/username/${username}`) 
             .then(res => {
                 return res.json();
             })
@@ -64,11 +66,12 @@ function LoginForm() {
                 setLoading(false);
             });*/
     }
+            });
 
     if (redirect) {
-        return <Redirect to='/home' />;
+        return <Redirect to='/home'/>;
     }
-
+    }
     return (
         <LoginContainer>
             <img src={logo} alt='disliked' />
@@ -91,5 +94,6 @@ function LoginForm() {
         </LoginContainer>
     )
 }
+
 
 export default LoginForm;
