@@ -20,3 +20,6 @@ Se puede trabajar en desarrollo solo haciendo el npm start del back pero para ca
 
 URL de un video en el que se demuestre la funcionalidad la aplicación:
 -https://youtu.be/1jcVFqruepY
+
+URL:
+https://proyectopet.herokuapp.com/
