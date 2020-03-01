@@ -41,7 +41,7 @@ function LoginForm() {
 
     const login = async (e) => {
         setLoading(true);
-
+        console.log(`${url}/users/username/${username}`)
         fetch(`${url}/users/username/${username}`) 
             .then(res => {
                 return res.json();
@@ -62,10 +62,10 @@ function LoginForm() {
 
                 setLoading(false);
             });
-    }
+   
 
     if (redirect) {
-        return <Redirect to='/home' />;
+        return <Redirect to='/home'/>;
     }
 
     return (
@@ -89,6 +89,7 @@ function LoginForm() {
             <SmallLoadingButton onClick={login} loading={loading}>Entrar</SmallLoadingButton>
         </LoginContainer>
     )
+}
 }
 
 export default LoginForm;
