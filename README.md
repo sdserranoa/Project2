@@ -4,6 +4,7 @@ Descripción:
 Es una página web que facilita la adopción de mascotas en determinados refugios al mostrarlas todas en una interfaz amigable, y darle la capacidad al usuario de que pueda dar me gusta o no a cada una de las mascotas.
 URL para ver el live demode la aplicación:
 --------------FALTA
+
 Instrucciones para correr el proyecto:
 (Solo desarrollo)
 1) npm install dentro de la carpeta de app-back
