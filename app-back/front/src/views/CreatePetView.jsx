@@ -22,10 +22,12 @@ function CreatePetView() {
 
     const createPet = async () => {
         setLoading(true);
-
         const response = await fetch(url + '/all-pets/postPet', {
             method: 'POST',
             body: JSON.stringify({ ...pet }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
 
         const status = response.status;
