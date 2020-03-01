@@ -6,7 +6,7 @@ import SmallLoadingButton from '../buttons/SmallLoadingButton';
 import logo from '../../assets/logo.png';
 import Input from '../inputs/Input';
 
-// import url from '../../api/url'
+import url from '../../api/url'
 
 const LoginContainer = styled.form`
     align-items: center;
@@ -36,18 +36,21 @@ function LoginForm() {
     // const [errorMessage, setErrorMessage] = useState('');
     const [errorMessage] = useState('');
     const [redirect, setRedirect] = useState(false);
+    var state = {
+        user: null
+    }
 
-    const login = async(e) => {
+    const login = async (e) => {
         setLoading(true);
-        // const response = await fetch(`${url}`, {
-        //     method: 'GET',
-        //     body: JSON.stringify({ username, password }),
-        // });
 
+        fetch(`${url}/users/username/${username}`) 
+            .then(res => res.json());
+
+        //console.log(response);
         // const status = response.status;
         setLoading(false);
         // if (status === 200) {
-            setRedirect(true);
+        setRedirect(true);
         // } else if (status === 401) {
         //     setErrorMessage('Usuario o contraseña incorrectos');
         // }
@@ -57,8 +60,8 @@ function LoginForm() {
     }
 
     return (
-        <LoginContainer onSubmit={login}>
-            <img src={logo} alt='disliked'/>
+        <LoginContainer>
+            <img src={logo} alt='disliked' />
 
             <FormInputContainer label='Usuario:'>
                 <Input
