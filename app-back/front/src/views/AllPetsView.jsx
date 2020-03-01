@@ -27,67 +27,70 @@ function AllPetsView(props) {
 
     const [loadingPets, setLoadingPets] = useState(true);
 
-    const putUserPetRelationStatusById = async (id, userPetState) => {
-        // const response = await fetch(`${url}/resto-ruta`, {
-        //         method: 'PUT',
-        // });
-
-        // const status = response.status;
-        // if (status !== 200) {
-
-        //     //Tratar de que se envien cuando retome conexion.
-        // }
-    }
 
     useEffect(() => {
 
         async function getPets() {
             const url1 = `${url}/all-pets`;
             fetch(url1)
-              .then(res => {
-                return res.json();
-              }).then(o => {
+                .then(res => {
+                    return res.json();
+                }).then(o => {
                     setPets(o);
                     setLoadingPets(false);
-              })
+                })
         }
 
         async function getUser() {
-            const response = await fetch(url + '/users/' + userId);
-            const body = await response.json();
-            console.log(body);
-            console.log(response.status);
-
-            if(response.status === 200){
-                setUser(body);
-            }
-            else{
-                // setRedirect(1);
-            }
+            const url1 = `${url}/users/${userId}`;
+            fetch(url1)
+                .then(res => {
+                    return res.json();
+                }).then(o => {
+                    setUser(o);
+                })
         }
-
         getUser();
         getPets();
+        addUserInfo(pets, user);
 
     }, [userId]);
+
+    function addUserInfo(pets, userPetInfo) {
+        for (var i = 0; i < pets.length; i++) {
+            let pet = pets[i];
+            pet.state = userPetInfo[pet.id].state;
+            pet.userPetId = userPetInfo[pet.id].userPetId;
+            pet.addedToCart = userPetInfo[pet.id].addedToCart;
+            pets[i] = pet;
+        }
+    }
+    async function getPetsFromUserId(id) {
+        const url1 = `${url}/shopping-cart/${id}`;
+        fetch(url1)
+            .then(res => {
+                return res.json();
+            }).then(o => {
+                return o;
+            })
+    }
 
     return (
         <View>
 
-            {redirect ===0 ? null
+            {redirect === 0 ? null
                 :
-                redirect ===1? <Redirect to='/'/>
-                :
-                null
-             }
-            <NavigationBar/>
+                redirect === 1 ? <Redirect to='/' />
+                    :
+                    null
+            }
+            <NavigationBar />
 
             <main>
                 <TopInfoContainer>
                     <h2>Mascotas Para Adoptar</h2>
                 </TopInfoContainer>
-                <PetsView pets={pets} loading={loadingPets} user={user}/>
-
+                <PetsView pets={pets} loading={loadingPets} user={user} />
             </main>
 
             <Footer />

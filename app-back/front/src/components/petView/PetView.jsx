@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import ShoppingCart from '../../views/ShoppingCart';
 import PetInfoTable from './PetInfoTable';
 import PhotoGrid from './PhotoGrid';
 import styled from 'styled-components';
@@ -95,60 +96,62 @@ const Button = styled.div`
 `
 
 
-function PetView({pet, userId}) {
+function PetView({ pet, userId }) {
 
     const userPetId = pet.userPetId;
     const [userPetState, setUserPetState] = useState(pet.state);
-
-    const like = ()=>{
-        setUserPetState(userPetState !== 'liked'?'liked':'');
+    const [buyState, setBuyState] = useState(pet.buyState);
+    const like = () => {
+        setUserPetState(userPetState !== 'liked' ? 'liked' : '');
     }
-    const dislike = ()=>{
-        setUserPetState(userPetState !== 'disliked'?'disliked':'');
+    const dislike = () => {
+        setUserPetState(userPetState !== 'disliked' ? 'disliked' : '');
     }
     return (
         <PetCard>
             <PetCardPhotos>
-                    <PhotoGrid
-                            petId={pet.id}
-                    />
-                </PetCardPhotos>
-                <ButtonsContainer>
-                    {userPetState === 'disliked'?
-                        <Button onClick={dislike}>
-                            <img src={x_selected} alt='disliked'/>
-                            <h6>Descartar</h6>
-                        </Button>
-                        :
-                        <Button onClick={dislike}>
-                            <img src={x} alt='dislike'/>
-                            <h6>Descartar</h6>
-                        </Button>
-                    }
-                    {userPetState === 'liked'?
-                        <Button onClick={like}>
-                            <img src={heart_selected} alt='liked'/>
-                            <h6>Me Gusta</h6>
-                        </Button>
-                        :
-                        <Button onClick={like}>
-                            <img src={heart} alt='like'/>
-                            <h6>Me Gusta</h6>
-                        </Button>
-                    }
-                </ButtonsContainer>
+                <PhotoGrid
+                    petId={pet.id}
+                />
+            </PetCardPhotos>
+            <ButtonsContainer>
+                {userPetState === 'disliked' ?
+                    <Button onClick={dislike}>
+                        <img src={x_selected} alt='disliked' />
+                        <h6>Descartar</h6>
+                    </Button>
+                    :
+                    <Button onClick={dislike}>
+                        <img src={x} alt='dislike' />
+                        <h6>Descartar</h6>
+                    </Button>
+                }
+                {userPetState === 'liked' ?
+                    <Button onClick={like}>
+                        <img src={heart_selected} alt='liked' />
+                        <h6>Me Gusta</h6>
+                    </Button>
+                    :
+                    <Button onClick={like}>
+                        <img src={heart} alt='like' />
+                        <h6>Me Gusta</h6>
+                    </Button>
+                }
+            </ButtonsContainer>
             <PetCardContent>
-                    <PetInfoTable
+                <PetInfoTable
                     pet={pet}
-                    />
+                />
             </PetCardContent>
-            <Button onClick={dislike}>
-                        <img src={shopping_cart} alt='shopping_cart'/>
-                        <h6> Adoptar</h6>
-            </Button>
+            <div>
+                <Button onClick={dislike}>
+                    <img src={shopping_cart} alt='shopping_cart' />
+                    <h6> Adoptar</h6>
+                </Button>
+            </div>
         </PetCard>
 
-       );
+    );
 }
 
 export default PetView;
