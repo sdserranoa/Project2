@@ -6,6 +6,8 @@ export const pets= [
         age: '2',
         description: 'Un perro rescatado de peleas, bravo pero te va a cuidar.',
         lovingRate: 1,
+        nameFosterHouse: 'X',
+
     },
     {
         id: 2,
@@ -14,6 +16,8 @@ export const pets= [
         age: '3',
         description: 'Viene de alaska, perfecto para el frio.',
         lovingRate: 5,
+        nameFosterHouse: 'Y',
+
     },
     {
         id: 3,
@@ -22,6 +26,8 @@ export const pets= [
         age: '5',
         description: 'Un perro tranquilo, solo come y duerme.',
         lovingRate: 4,
+        nameFosterHouse: 'Z',
+
     },
     {
         id: 4,
@@ -30,6 +36,8 @@ export const pets= [
         age: '4',
         description: 'Sus dueños abandonaron el pais, y esta buscando un nuevo hogar.',
         lovingRate: 2,
+        nameFosterHouse: 'F',
+
     },
     {
         id: 5,
@@ -38,6 +46,7 @@ export const pets= [
         age: '2',
         description: 'Un perro muy activo, ama jugar y a los niños.',
         lovingRate: 5,
+        nameFosterHouse: 'Foster',
     },
 
 ];

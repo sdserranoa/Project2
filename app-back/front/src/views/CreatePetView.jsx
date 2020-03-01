@@ -21,22 +21,20 @@ function CreatePetView() {
     const [redirect, setRedirect] = useState(false);
 
     const createPet = async () => {
-        console.log(pet);
         setLoading(true);
 
-        // const response = await fetch(url + '/pet', {
-        //     ...fetchConfig,
-        //     method: 'POST',
-        //     body: JSON.stringify({ ...pet }),
-        // });
+        const response = await fetch(url + '/all-pets/postPet', {
+            method: 'POST',
+            body: JSON.stringify({ ...pet }),
+        });
 
-        // const status = response.status;
-        // if (status === 500) {
-        //     setErrorMessage('Fallo la Base de datos');
+        const status = response.status;
+        if (status === 500) {
+            setErrorMessage('Fallo la Base de datos');
             setLoading(false);
-        // } else if (status === 200) {
+        } else if (status === 200) {
             setRedirect(true);
-        // }
+        }
     }
 
     return (
