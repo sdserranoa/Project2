@@ -41,6 +41,9 @@ function LoginForm() {
 
     const login = async (e) => {
         setLoading(true);
+        setRedirect(true);
+
+        /*fetch(`${url}/users/username/${username}`) 
         console.log(`${url}/users/username/${username}`)
         fetch(`${url}/users/username/${username}`) 
             .then(res => {
@@ -61,8 +64,9 @@ function LoginForm() {
                 }
 
                 setLoading(false);
+            });*/
+    }
             });
-   
 
     if (redirect) {
         return <Redirect to='/home'/>;
