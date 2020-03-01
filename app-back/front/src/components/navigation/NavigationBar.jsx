@@ -76,6 +76,7 @@ function NavigationBar() {
                 <StyledNavLink exact to='/all-pets'>Mascotas</StyledNavLink>
                 <StyledNavLink exact to='/favorites'>Favoritos</StyledNavLink>
                 <StyledNavLink exact to='/shopping-cart'>Carrito</StyledNavLink>
+                <StyledNavLink exact to='/create-pet'>Crear</StyledNavLink>
             </LinkContainer>
         </Navbar>
     );

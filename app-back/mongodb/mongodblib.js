@@ -71,16 +71,38 @@ const postPet = function (pet, db, callback) {
     collection.insert(pet).then(callback(pet));
 }
 const putUserPetInteraction = function (db,userId,petId,interaction,callback){
-  const collection = db.collection('Users');
-  collection.updateOne(
-    { id: parseInt(userId), "interactedPetsIds.petId":parseInt(petId) },
-    {
-      $set: { "interactedPetsIds.$": interaction },
-      $currentDate: { lastModified: true }
-    } 
- ).then(result=>{
-   callback(interaction);
- })
+
+    getIteractionsById(userId,db,docs=>{
+        const collection = db.collection('Users');
+        var actuales=[];
+        
+        var pet = docs.filter(e => e.petId == petId)
+   
+        if(pet.length>0){
+            collection.updateOne(
+                { id: parseInt(userId), "interactedPetsIds.petId":parseInt(petId) },
+                {
+                  $set: { "interactedPetsIds.$": interaction },
+                  $currentDate: { lastModified: true }
+                } 
+             ).then(result=>{
+               callback(interaction);
+             })
+        }else{
+            docs.push(interaction);
+           collection.updateOne(
+                { id: parseInt(userId) },
+                {
+                  $set: { "interactedPetsIds": docs },
+                  $currentDate: { lastModified: true }
+                } 
+             ).then(result=>{
+               callback(interaction);
+             })
+        }
+        })
+
+
 }
 exports.getDatabase = getDatabase;
 exports.getAllPets = getAllPets;
