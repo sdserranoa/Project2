@@ -19,5 +19,13 @@ router.put('/:userId/:petId', function(req, res, next) {
     })
 });
 
+router.post('/postPet', function(req, res, next) {
+   
+    Mongolib.getDatabase(db=>{
+        Mongolib.postPet(req.body,db,docs=>{
+            res.send(docs);
+        })
+    })
+});
 
 module.exports = router;

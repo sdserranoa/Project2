@@ -66,6 +66,10 @@ const getIteractionsById = function (idU, db, callback) {
         callback(docs[0].interactedPetsIds);
     })
 }
+const postPet = function (pet, db, callback) {
+    const collection = db.collection('Pets');
+    collection.insert(pet).then(callback(pet));
+}
 const putUserPetInteraction = function (db,userId,petId,interaction,callback){
   const collection = db.collection('Users');
   collection.updateOne(
@@ -86,3 +90,4 @@ exports.findUsers = findUsers;
 exports.findUserById = findUserById;
 exports.getIteractionsById = getIteractionsById;
 exports.putUserPetInteraction =  putUserPetInteraction;
+exports.postPet =  postPet;
