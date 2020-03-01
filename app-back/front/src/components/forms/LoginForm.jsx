@@ -91,7 +91,7 @@ function LoginForm() {
             <SmallLoadingButton onClick={login} loading={loading}>Entrar</SmallLoadingButton>
         </LoginContainer>
     )
-}
 
+    }
 
 export default LoginForm;

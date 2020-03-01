@@ -3,7 +3,7 @@
 Descripción:
 Es una página web que facilita la adopción de mascotas en determinados refugios al mostrarlas todas en una interfaz amigable, y darle la capacidad al usuario de que pueda dar me gusta o no a cada una de las mascotas.
 URL para ver el live demode la aplicación:
---------------FALTA
+-https://proyectopet.herokuapp.com/
 
 Instrucciones para correr el proyecto:
 (Solo desarrollo)
@@ -19,4 +19,4 @@ Instrucciones para correr el proyecto:
 Se puede trabajar en desarrollo solo haciendo el npm start del back pero para cada cambio que se haga en el front se tiene que hacer npm run build en la carpeta del front para que los cambios se vean en el navegador
 
 URL de un video en el que se demuestre la funcionalidad la aplicación:
------FALTA
+-https://youtu.be/1jcVFqruepY
