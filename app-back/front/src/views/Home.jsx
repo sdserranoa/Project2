@@ -34,7 +34,6 @@ class Home extends React.Component {
 
                     <Container>
                         <Row>
-
                             <Col xs={12}>
                                 <Carousel>
                                     <Carousel.Item>
