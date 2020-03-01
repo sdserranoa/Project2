@@ -67,7 +67,7 @@ function LoginForm() {
     if (redirect) {
         return <Redirect to='/home'/>;
     }
-
+    }
     return (
         <LoginContainer>
             <img src={logo} alt='disliked' />
@@ -90,6 +90,6 @@ function LoginForm() {
         </LoginContainer>
     )
 }
-}
+
 
 export default LoginForm;
