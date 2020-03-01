@@ -114,6 +114,16 @@ const deletePet =function (petId, db, callback) {
      });
     
 }
+
+const getUserbyUsername = function(username, db, callback) {
+    const users = db.collection("Users");
+    users.find({username: username}).toArray(function(err, docs) {
+        console.log(docs);
+        assert.equal(err, null);
+        callback(docs);
+    })
+}
+
 exports.getDatabase = getDatabase;
 exports.getAllPets = getAllPets;
 exports.findHouses = findHouses;
@@ -124,3 +134,4 @@ exports.getIteractionsById = getIteractionsById;
 exports.putUserPetInteraction =  putUserPetInteraction;
 exports.postPet =  postPet;
 exports.deletePet =  deletePet;
+exports.getUserbyUsername = getUserbyUsername;
