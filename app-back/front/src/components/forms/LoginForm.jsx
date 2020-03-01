@@ -33,8 +33,7 @@ function LoginForm() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
-    // const [errorMessage, setErrorMessage] = useState('');
-    const [errorMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const [redirect, setRedirect] = useState(false);
     var state = {
         user: null
@@ -44,17 +43,27 @@ function LoginForm() {
         setLoading(true);
 
         fetch(`${url}/users/username/${username}`) 
-            .then(res => res.json());
+            .then(res => {
+                return res.json();
+            })
+            .then(users => {
+                console.log(users);
+                const user = users[0];
 
-        //console.log(response);
-        // const status = response.status;
-        setLoading(false);
-        // if (status === 200) {
-        setRedirect(true);
-        // } else if (status === 401) {
-        //     setErrorMessage('Usuario o contraseña incorrectos');
-        // }
+                if(user !== undefined) {
+                    if(user.password === password) {
+                        setRedirect(true);
+                    } else {
+                        setErrorMessage("Contraseña incorrecta");
+                    }
+                } else {
+                    setErrorMessage("Usuario no existe");
+                }
+
+                setLoading(false);
+            });
     }
+
     if (redirect) {
         return <Redirect to='/home' />;
     }
