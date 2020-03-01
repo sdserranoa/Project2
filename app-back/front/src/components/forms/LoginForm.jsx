@@ -66,12 +66,10 @@ function LoginForm() {
                 setLoading(false);
             });*/
     }
-            
 
     if (redirect) {
-        return <Redirect to='/home'/>;
+        return <Redirect to='/home' />;
     }
-    
     return (
         <LoginContainer>
             <img src={logo} alt='disliked' />
