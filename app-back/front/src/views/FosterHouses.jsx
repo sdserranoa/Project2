@@ -45,14 +45,21 @@ function AllFosterHousesView(props) {
     useEffect(() => {
 
         async function getFosterHouses() {
-            
+            const url = "/foster-houses";
+            fetch(url)
+                .then(res => {
+                    console.log(res);
+                    return res.json();
+                }).then(o => {
+                    console.log(o);
+                })
         }
 
         async function getUser() {
 
         }
-        console.log(fosterHouses);
-        console.log(user);
+        //console.log(fosterHouses);
+        //console.log(user);
 
         getUser();
         getFosterHouses();
