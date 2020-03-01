@@ -46,6 +46,12 @@ router.get('/:id', function (req, res, next) {
   })
 });
 
-
+router.get('/username/:username', function(req, res, next) {
+  const username = req.params.username;
+ 
+  Mongolib.getDatabase(db => {
+    Mongolib.getUserbyUsername(username, db, docs => {res.send(docs)});
+  })
+})
 
 module.exports = router;

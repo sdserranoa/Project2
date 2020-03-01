@@ -28,4 +28,14 @@ router.post('/postPet', function(req, res, next) {
     })
 });
 
+router.delete('/:petId/deletePet', function(req,res,next){
+    Mongolib.getDatabase(db=>{
+        Mongolib.deletePet(req.params.petId,db,docs=>{
+            res.send(docs);
+        })
+    })
+});
+
+
+
 module.exports = router;
