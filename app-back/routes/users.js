@@ -52,6 +52,31 @@ router.get('/username/:username', function(req, res, next) {
   Mongolib.getDatabase(db => {
     Mongolib.getUserbyUsername(username, db, docs => {res.send(docs)});
   })
-})
+});
+router.post('/postUser', function (req, res, next) {
+  Mongolib.getDatabase(db => {
+    Mongolib.postUser(req.body, db, docs => {
+      res.send(docs);
+    })
+  })
+});
+
+router.delete('/:id', function (req, res, next) {
+  Mongolib.getDatabase(db => {
+    Mongolib.deteleUser(req.params.id, db, docs => {
+      res.send("Usuario elimiendo");
+    })
+  })
+
+});
+
+router.put('/:id', function(req, res, next) {
+   
+  Mongolib.getDatabase(db=>{
+      Mongolib.putUser(req.params.id, req.body, db,docs=>{
+          res.send(docs);
+      })
+  })
+});
 
 module.exports = router;
