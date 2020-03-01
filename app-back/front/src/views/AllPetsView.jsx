@@ -42,19 +42,14 @@ function AllPetsView(props) {
     useEffect(() => {
 
         async function getPets() {
-            const response = await fetch(`${url}/all-pets`);
-            const body = await response.json();
-            console.log(body);
-            console.log(response.status);
-
-            if(response.status === 200){
-                setPets(body);
-                setLoadingPets(false);
-            }
-            else{
-                // setRedirect(1);
-            }
-
+            const url1 = `${url}/all-pets`;
+            fetch(url1)
+              .then(res => {
+                return res.json();
+              }).then(o => {
+                    setPets(o);
+                    setLoadingPets(false);
+              })
         }
 
         async function getUser() {

@@ -50,10 +50,10 @@ class PhotoGrid extends React.Component {
             const s3 = new aws.S3();
             const response = await s3.listObjectsV2({
                 Bucket: 'pet-society',
-                Prefix: this.props.fosterHouseId + '',
+                Prefix: 'f'+this.props.fosterHouseId,
             }).promise();
             let photosInfo = response['Contents'];
-
+            console.log(photosInfo);
             let photoLinks = [''];
 
             for (var i = 0; i < photosInfo.length; i++) {
@@ -63,7 +63,7 @@ class PhotoGrid extends React.Component {
             }
 
             photoLinks.push('');
-
+            //console.log(photoLinks);
             await this.setState({
                 photoLinks: photoLinks
             });
