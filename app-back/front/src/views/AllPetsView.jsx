@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-// import url from '../components/api/url'
+import url from '../api/url'
 import NavigationBar from '../components/navigation/NavigationBar';
 import Footer from '../components/navigation/Footer';
 import PetsView from '../components/petView/PetsView';
 import { Redirect } from 'react-router-dom';
 import View from '../components/layouts/View';
-import { pets } from '../debugData/PetData';
-import { user } from '../debugData/UserData';
+// import { pets } from '../debugData/PetData';
+// import { user } from '../debugData/UserData';
 import styled from 'styled-components';
 
 const TopInfoContainer = styled.div`
@@ -22,8 +22,8 @@ function AllPetsView(props) {
     //0-->NO   1-->inscripcion  2-->referidos
     const [redirect, setRedirect] = useState(0);
 
-    // const [pets, setPets] = useState(pets);
-    // const [user, setUser] = useState({});
+    const [pets, setPets] = useState([]);
+    const [user, setUser] = useState({});
 
     const [loadingPets, setLoadingPets] = useState(true);
 
@@ -42,17 +42,37 @@ function AllPetsView(props) {
     useEffect(() => {
 
         async function getPets() {
+            const response = await fetch(`${url}/all-pets`);
+            const body = await response.json();
+            console.log(body);
+            console.log(response.status);
+
+            if(response.status === 200){
+                setPets(body);
+                setLoadingPets(false);
+            }
+            else{
+                // setRedirect(1);
+            }
+
         }
 
         async function getUser() {
+            const response = await fetch(url + '/users/' + userId);
+            const body = await response.json();
+            console.log(body);
+            console.log(response.status);
 
+            if(response.status === 200){
+                setUser(body);
+            }
+            else{
+                // setRedirect(1);
+            }
         }
-        console.log(pets);
-        console.log(user);
 
         getUser();
         getPets();
-        setLoadingPets(false);
 
     }, [userId]);
 

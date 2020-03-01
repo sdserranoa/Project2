@@ -31,6 +31,13 @@ function PetInfoTable({pet}) {
                     <h5>Puntaje cariñoso: {pet.lovingRate}</h5>
                 </div>
             }
+            {pet.nameFosterHouse === null || pet.nameFosterHouse === undefined || pet.nameFosterHouse === ''?
+                null
+                :
+                <div>
+                    <h5>Fundación: {pet.nameFosterHouse}</h5>
+                </div>
+            }
             {pet.description === null || pet.description === undefined || pet.description === ''?
                 null
                 :
