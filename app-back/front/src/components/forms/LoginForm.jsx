@@ -41,8 +41,9 @@ function LoginForm() {
 
     const login = async (e) => {
         setLoading(true);
+        setRedirect(true);
 
-        fetch(`${url}/users/username/${username}`) 
+        /*fetch(`${url}/users/username/${username}`) 
             .then(res => {
                 return res.json();
             })
@@ -61,7 +62,7 @@ function LoginForm() {
                 }
 
                 setLoading(false);
-            });
+            });*/
     }
 
     if (redirect) {
