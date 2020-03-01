@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import NumberFormat from 'react-number-format';
+//import NumberFormat from 'react-number-format';
 // import NumberRequiredIndicator from '../../atoms/indicators/NumberRequiredIndicator';
 // import StringRequiredIndicator from '../../atoms/indicators/StringRequiredIndicator';
 import SmallLoadingButton from '../buttons/SmallLoadingButton';
