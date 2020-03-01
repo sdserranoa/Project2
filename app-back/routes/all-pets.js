@@ -10,6 +10,14 @@ router.get('/', function(req, res, next) {
         })
     })
 });
+router.put('/:userId/:petId', function(req, res, next) {
+   
+    Mongolib.getDatabase(db=>{
+        Mongolib.putUserPetInteraction(db,req.params.userId,req.params.petId,req.body,docs=>{
+            res.send(docs);
+        })
+    })
+});
 
 
 module.exports = router;

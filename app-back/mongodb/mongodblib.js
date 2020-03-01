@@ -66,7 +66,18 @@ const getIteractionsById = function (idU, db, callback) {
         callback(docs[0].interactedPetsIds);
     })
 }
-
+const putUserPetInteraction = function (db,userId,petId,interaction,callback){
+  const collection = db.collection('Users');
+  collection.updateOne(
+    { id: parseInt(userId), "interactedPetsIds.petId":parseInt(petId) },
+    {
+      $set: { "interactedPetsIds.$": interaction },
+      $currentDate: { lastModified: true }
+    } 
+ ).then(result=>{
+   callback(interaction);
+ })
+}
 exports.getDatabase = getDatabase;
 exports.getAllPets = getAllPets;
 exports.findHouses = findHouses;
@@ -74,3 +85,4 @@ exports.getPetsByIds = getPetsByIds;
 exports.findUsers = findUsers;
 exports.findUserById = findUserById;
 exports.getIteractionsById = getIteractionsById;
+exports.putUserPetInteraction =  putUserPetInteraction;
